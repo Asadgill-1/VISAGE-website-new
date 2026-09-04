@@ -1,0 +1,1404 @@
+VESAGE — MASTER CREATIVE WEBSITE + CLAUDE CODE PROMPT
+You are building the official portfolio website for VESAGE, an independent creative practice working across advertising, film, brand content, creative direction, and digital/web experiences.
+
+This is NOT a conventional marketing-agency website.
+
+The website itself must feel like an artist's work.
+
+Think:
+
+Independent artist × film director × luxury editorial × creative studio × digital art exhibition
+
+The website must communicate two things simultaneously:
+
+1. VESAGE has strong artistic taste and a distinctive visual identity.
+2. VESAGE is commercially capable of creating serious advertising, campaigns, films, brand content, and websites for real brands.
+
+The final result should feel premium, cinematic, minimal, bold, artistic, and highly intentional.
+
+---
+
+01 — BRAND IDENTITY
+
+Brand name:
+
+VESAGE
+
+Positioning:
+
+«An independent creative practice making films, campaigns, brands and digital experiences with an artist's eye.»
+
+Do NOT make the website feel like:
+
+- a generic digital agency
+- a social media agency
+- a web-development company
+- a SaaS website
+- a corporate marketing company
+- a template portfolio
+- a standard Behance-style grid
+- an over-designed "agency website" full of unnecessary animations
+
+The visitor should feel like they have entered the visual world of a creative artist/studio.
+
+The desired emotional reaction is:
+
+"Who made this?"
+
+followed by:
+
+"I want to see their work."
+
+and finally:
+
+"These people can make something serious for my brand."
+
+---
+
+02 — CORE CREATIVE DIRECTION
+
+The five primary visual characteristics are:
+
+CINEMATIC
+LUXURY
+MINIMAL
+ARTISTIC
+BOLD
+
+Overall description:
+
+«Quiet luxury with cinematic impact.»
+
+Luxury must NOT mean generic black-and-gold styling.
+
+Avoid:
+
+- excessive gold
+- fake luxury gradients
+- glossy 3D chrome everywhere
+- unnecessary glassmorphism
+- generic neon
+- excessive black backgrounds simply because they look "premium"
+
+Instead, create luxury through:
+
+- typography
+- spacing
+- composition
+- photography
+- negative space
+- pacing
+- restraint
+- image quality
+- subtle motion
+- editorial art direction
+
+The website should feel expensive because it is controlled, not because it is decorated.
+
+---
+
+03 — VISUAL REFERENCE
+
+Use the visual ambition of websites such as:
+
+- Godly
+- 21.dev
+- contemporary creative studio portfolios
+- fashion/editorial websites
+- luxury campaign websites
+- film director portfolios
+- contemporary art galleries
+
+IMPORTANT:
+
+Do NOT copy these websites.
+
+Use them only as references for:
+
+- visual ambition
+- interaction quality
+- typography
+- composition
+- unconventional layouts
+- motion
+- art direction
+- curation
+
+VESAGE must have its own recognizable visual identity.
+
+If someone screenshots the homepage and removes the VESAGE logo, the design should still feel recognizable as VESAGE.
+
+---
+
+04 — DESIGN PRINCIPLE
+
+The most important principle:
+
+THE WEBSITE IS THE FIRST VESAGE PROJECT.
+
+Do not treat the website as a container for the portfolio.
+
+The website itself must demonstrate:
+
+- creative direction
+- art direction
+- typography
+- motion
+- composition
+- digital design
+- storytelling
+- visual taste
+
+The portfolio should not simply SHOW the work.
+
+The portfolio should DIRECT the visitor through the work.
+
+Think like a film director.
+
+---
+
+05 — COLOR SYSTEM
+
+Primary interface palette:
+
+Warm off-white:
+#F3F1EC
+
+Deep black:
+#0A0A0A
+
+Soft neutral:
+#D8D4CC
+
+Muted gray:
+#8B8984
+
+The interface should primarily use:
+
+off-white + black + neutral tones
+
+Do not force one accent color throughout the entire website.
+
+Instead, allow individual projects to introduce their own visual colors.
+
+01 — THE CORE IDEA
+The website must communicate:
+An artist's eye with commercial-level execution.
+VESAGE should feel like:
+Independent artist × film director × luxury editorial × fashion campaign × digital art
+NOT:
+generic marketing agency
+social media agency
+web development agency
+corporate creative agency
+freelancer template
+Behance portfolio
+SaaS landing page
+standard 3-column portfolio
+The visitor should first think:
+"This is beautiful."
+Then:
+"Who made this?"
+Then:
+"They work with serious brands."
+Then:
+"I want VESAGE to make something for my brand."
+That emotional progression is more important than explaining everything immediately.
+02 — VESAGE BRAND PERSONALITY
+The five primary characteristics are:
+CINEMATIC
+LUXURY
+MINIMAL
+ARTISTIC
+BOLD
+The overall visual philosophy:
+Quiet luxury with cinematic impact.
+Luxury should come from:
+composition
+typography
+lighting
+imagery
+spacing
+negative space
+movement
+restraint
+editorial design
+Do NOT create fake luxury through:
+excessive gold
+black-and-gold clichés
+shiny gradients
+unnecessary 3D chrome
+generic glassmorphism
+glowing text
+random neon
+excessive particle effects
+The website should feel expensive because it is confident and controlled.
+
+SCROLL TO EXPLORE
+
+The hero should have subtle movement.
+
+The image should NOT simply autoplay like a YouTube video.
+
+It should feel integrated into the design.
+
+---
+
+10 — HERO VISUALS + HIGGSFIELD MCP
+
+You have access to the Higgsfield.ai MCP.
+
+Use it intelligently.
+
+Do not generate random AI visuals simply to show that AI was used.
+
+Higgsfield should be used when it improves the artistic direction.
+
+USE THIS SKILL
+/higgsfield-seedance-shotlist -director.skill
+
+Possible uses:
+
+- cinematic hero motion
+- abstract motion backgrounds
+- atmospheric transition sequences
+- experimental films
+- motion typography backgrounds
+- visual loops
+- conceptual campaign imagery
+- artistic interstitials
+- subtle cinematic video textures
+
+IMPORTANT:
+
+Real client work supplied by the user must always take priority over AI-generated replacements.
+
+If actual IKEA footage exists:
+
+USE THE ACTUAL IKEA FOOTAGE.
+
+Do not replace it with AI.
+
+If actual AURA ROYALRE product photography/video exists:
+
+USE THE ACTUAL ASSET.
+
+Do not replace it with AI.
+
+AI-generated visuals should primarily be used for:
+
+- VESAGE identity
+- LAB / experimental section
+- transitions
+- atmospheric elements
+- placeholder concept visuals before real assets are uploaded
+
+Never falsely represent generated material as client work.
+
+---
+
+11 — SELECTED WORK
+
+Do NOT build a conventional 3-column portfolio grid.
+
+This is one of the most important requirements.
+
+The work should feel like an art-directed exhibition.
+
+Use varied compositions.
+
+Some projects can be:
+
+- full width
+- split screen
+- asymmetric
+- vertically stacked
+- image dominant
+- typography dominant
+- video dominant
+
+The layout should have rhythm.
+
+Example:
+
+
+03 — IMPORTANT CLIENT-WORK RULE
+
+The new portfolio must be built around the following actual portfolio sequence.
+04 — ACTUAL PORTFOLIO CONTENT
+The user has provided portfolio videos/assets in this sequence.
+Treat these as the actual source material.
+PROJECT 01
+UNIQLO
+Type:
+UGC / Fashion / Indoor
+This is a clothing/fashion brand UGC-style piece shot indoors.
+The presentation should feel:
+fashion-forward
+authentic
+editorial
+contemporary
+Do not make it look like a traditional "UGC agency" advertisement.
+Treat the visual material as part of VESAGE's creative portfolio.
+PROJECT 02
+UNIQLO
+Type:
+UGC / Fashion / Outdoor
+This is another UNIQLO fashion UGC piece, shot outdoors.
+It should be presented as a separate project from Project 01.
+The two UNIQLO projects should not look like duplicate cards.
+Give each one its own visual composition.
+Possible labels:
+01 — UNIQLO / INDOOR
+02 — UNIQLO / OUTDOOR
+Or use:
+UNIQLO
+UGC / FASHION
+with the visual itself distinguishing the projects.
+PROJECT 03
+BRUNELLO CUCINELLI
+Type:
+Cinematic Commercial Film
+This should be treated as one of the major cinematic pieces on the website.
+This project should have a strong editorial presentation.
+Use:
+large cinematic video
+dramatic typography
+generous negative space
+subtle movement
+minimal metadata
+Do not overload the page with text.
+The film is the hero.
+PROJECT 04
+UNIQLO
+Type:
+Fashion Catalogue / Model
+This is a catalogue-style fashion video showing the model trying/wearing the clothing.
+Present it differently from the two UGC projects.
+Possible category:
+FASHION / CATALOGUE
+This helps demonstrate that VESAGE can work across multiple forms of fashion content:
+UGC
+Commercial
+Catalogue
+Editorial
+PROJECT 05
+CLOUD NINE — SPLASH POPS
+Type:
+UGC / Women's Perfume
+This is a beauty/fragrance UGC project.
+The visual language should transition naturally from fashion into beauty.
+Potential metadata:
+CLOUD NINE
+UGC / FRAGRANCE
+SPLASH POPS
+Do not invent campaign information.
+Do not invent campaign results.
+Do not invent statistics.
+Only use information supplied by the user.
+PROJECT 06
+BRUNELLO CUCINELLI
+Type:
+Product Hyper-Motion Advertisement
+This should feel dramatically different from Project 03.
+Project 03 demonstrates:
+cinematic storytelling
+Project 06 demonstrates:
+product cinematography / motion / visual effects
+Use the product video as the primary visual.
+Make this project feel highly polished and luxurious.
+PROJECT 07
+TIFFANY
+Type:
+Jewelry / Product Story Commercial
+This should be treated as a storytelling piece rather than simply a product advertisement.
+Category:
+JEWELRY / PRODUCT STORY
+The project page should allow the video to breathe.
+Use:
+cinematic pacing
+large visual
+minimal text
+elegant typography
+Do not add fake descriptions about the campaign.
+PROJECT 08
+TIFFANY
+Type:
+Jewelry / Brand Cinematic Commercial
+This is different from Project 07.
+Project 07:
+PRODUCT STORY
+Project 08:
+BRAND CINEMATIC
+Make the distinction clear.
+These two projects can have very different compositions.
+PROJECT 09
+AURA ROYALE
+Type:
+Perfume / Product Hyper-Motion Advertisement
+This is one of the key VESAGE projects.
+The visual direction should communicate:
+luxury fragrance
+precision
+darkness
+texture
+glass
+reflections
+controlled lighting
+premium product cinematography
+Use the actual uploaded video.
+Do not replace it with AI-generated footage.
+PROJECT 10
+AURA ROYALE
+Type:
+Perfume / Product Photography
+The uploaded Aura Royale product image should be used as a major visual asset.
+It can also be used as:
+project cover
+transition image
+project hero
+hover image
+visual detail within the Aura Royale case study
+The provided product image has a dark, monochromatic, luxury aesthetic.
+Use that visual language as inspiration for the Aura Royale presentation.
+Do not unnecessarily alter the actual product image.
+05 — PORTFOLIO HIERARCHY
+The portfolio should NOT simply display:
+01
+02
+03
+04
+05
+as ten equal cards.
+Instead, create hierarchy.
+The strongest projects should visually dominate.
+Suggested hierarchy:
+FEATURED
+BRUNELLO CUCINELLI
+CINEMATIC COMMERCIAL
+TIFFANY
+BRAND CINEMATIC
+AURA ROYALE
+PRODUCT HYPER-MOTION
+Then the other work can appear around them.
+However, all ten projects must remain accessible.
+06 — THE PORTFOLIO SHOULD FEEL LIKE AN EXHIBITION
+Do NOT build:
+[ IMAGE ] [ IMAGE ] [ IMAGE ]
+
+[ IMAGE ] [ IMAGE ] [ IMAGE ]
+
+[ IMAGE ] [ IMAGE ] [ IMAGE ]
+Instead, use an editorial composition.
+For example:
+01
+
+UNIQLO
+
+UGC / FASHION
+
+          [ LARGE VIDEO ]
+Then:
+                         02
+
+                  UNIQLO
+
+                  UGC / FASHION
+
+                  [ VIDEO ]
+Then:
+03
+
+BRUNELLO
+CUCINELLI
+
+CINEMATIC
+COMMERCIAL
+
+[ FULL-WIDTH VIDEO ]
+Then perhaps a split composition for Aura Royale.
+The rhythm should continuously change.
+07 — HOMEPAGE
+The homepage should feel like entering a film.
+Do not use:
+Welcome to VESAGE
+Do not use:
+We are a full-service creative agency.
+Do not use:
+We create innovative marketing solutions.
+Do not use generic agency copy.
+HERO
+The hero should use a cinematic visual.
+Possible headline:
+WE MAKE THINGS WORTH LOOKING AT.
+VESAGE should appear large.
+Potential structure:
+VESAGE
+
+WE MAKE
+THINGS WORTH
+LOOKING AT.
+
+                    FILM
+                    CAMPAIGNS
+                    DIGITAL
+
+SCROLL TO EXPLORE
+The hero image/video should dominate.
+Typography can overlap the visual.
+The composition should feel closer to:
+fashion magazine + film title sequence
+than:
+business website.
+08 — HERO MOTION
+The hero should have subtle cinematic movement.
+If an appropriate video exists:
+Use it.
+If the existing portfolio assets are not suitable for the hero:
+Use Higgsfield.ai MCP to create an abstract/cinematic VESAGE identity visual.
+However:
+Do not fabricate client work.
+Do not use AI-generated content and imply that it is a real client project.
+AI visuals can be used for:
+VESAGE identity
+hero atmosphere
+LAB
+transitions
+experimental work
+09 — NAVIGATION
+Navigation must be tiny and elegant.
+Desktop:
+VESAGE
+WORK
+LAB
+ABOUT
+CONTACT
+Keep it visually quiet.
+The work should dominate the screen.
+The navigation can disappear while scrolling and reappear when appropriate.
+Do not create a giant navbar.
+10 — SELECTED WORK INTRO
+After the hero:
+SELECTED
+WORK
+or simply:
+SELECTED WORK
+Then immediately begin showing the projects.
+No unnecessary paragraph.
+11 — PROJECT CARD DESIGN
+Each project should have:
+project number
+client
+category
+visual
+subtle interaction
+view indication
+Example:
+03
+
+BRUNELLO CUCINELLI
+
+CINEMATIC COMMERCIAL
+
+VIEW PROJECT ↗
+The typography should be restrained.
+The image/video should be the main attraction.
+12 — PROJECT HOVER
+Desktop hover:
+Cursor becomes:
+VIEW
+For video:
+PLAY
+For digital:
+ENTER
+For experimental:
+EXPLORE
+Cursor should be elegant and minimal.
+Do NOT make a giant obnoxious cursor.
+13 — PROJECT TRANSITION
+This should be one of the site's signature interactions.
+When clicking a project:
+The project visual expands.
+For example:
+THUMBNAIL
+     ↓
+SCALE
+     ↓
+FULL SCREEN
+     ↓
+PROJECT INFORMATION
+     ↓
+PROJECT PAGE
+The visitor should feel like they are entering the artwork.
+Avoid:
+thumbnail → loading screen → generic page.
+The transition should feel cinematic.
+14 — PROJECT PAGE
+Each project page should feel like a miniature film/exhibition.
+Structure:
+CLIENT
+
+PROJECT TYPE
+
+YEAR
+
+[ FULL-SCREEN HERO VIDEO ]
+
+SHORT DESCRIPTION
+
+[ LARGE VISUAL ]
+
+THE WORK
+
+[ VIDEO / IMAGE ]
+
+[ GALLERY ]
+
+CREATIVE
+DIRECTION
+FILM
+EDITING
+ART DIRECTION
+Only include credits that the user actually provides.
+If credits are unknown:
+Do not invent them.
+15 — CASE STUDY WRITING
+Do not create long corporate case studies.
+Avoid:
+"Our team worked closely with the client to develop an innovative 360-degree campaign..."
+Instead use short editorial writing.
+Example structure:
+A FILM BUILT AROUND
+MOVEMENT, TEXTURE
+AND ATTENTION TO DETAIL.
+But only use descriptive copy that is genuinely supported by the work.
+Do not invent campaign objectives.
+Do not invent performance results.
+Do not invent strategy.
+16 — CLIENT NAMES
+Client names currently represented:
+UNIQLO
+BRUNELLO CUCINELLI
+CLOUD NINE / SPLASH POPS
+TIFFANY
+AURA ROYALE
+Use correct spelling consistently.
+Do not invent additional clients.
+Do not create fake client logos.
+Do not create a fake:
+"Trusted by"
+logo wall.
+The portfolio itself provides the credibility.
+17 — IMPORTANT BRAND-USE DISCLAIMER
+The website is a creative portfolio.
+Where appropriate, use a subtle footer/disclaimer indicating that displayed brands are represented solely as examples of work/projects and that VESAGE does not imply ownership of those trademarks.
+Do not make the disclaimer visually prominent.
+Also make it easy to remove or modify later if the user has specific permissions/agreements.
+18 — LAB
+Create a separate section:
+LAB
+This is where VESAGE can become more experimental.
+Possible content:
+AI-generated cinematic experiments
+Higgsfield experiments
+motion tests
+typography experiments
+3D
+product visualization
+photography
+experimental websites
+unused concepts
+visual studies
+abstract films
+The LAB should feel less predictable than client work.
+This is the place where the website can become stranger.
+But maintain VESAGE's overall visual discipline.
+19 — HIGGSFIELD.AI MCP
+Higgsfield.ai MCP is connected to Claude Code.
+Use it intelligently.
+Do NOT generate content simply because the MCP exists.
+Use Higgsfield for:
+HERO
+If necessary, create an atmospheric cinematic opening visual.
+LAB
+Generate experimental visual pieces.
+TRANSITIONS
+Create abstract cinematic motion where appropriate.
+VESAGE BRAND WORLD
+Generate visuals that establish the VESAGE identity.
+CONCEPT DEVELOPMENT
+Create temporary visual concepts while waiting for final assets.
+But:
+REAL CLIENT ASSETS ALWAYS TAKE PRIORITY.
+If the user has provided a real UNIQLO video:
+Use the real UNIQLO video.
+If the user has provided the real Brunello Cucinelli video:
+Use the real video.
+If the user has provided the real Tiffany video:
+Use the real video.
+If the user has provided the Aura Royale product image:
+Use that actual image.
+Do not replace actual work with AI.
+
+— HIGGSFIELD MCP WORKFLOW
+
+Since the Higgsfield.ai MCP is connected:
+
+Use it as a creative production tool when appropriate.
+
+Before generating anything:
+
+Ask:
+
+Does this visual actually improve the VESAGE experience?
+
+If yes, use Higgsfield.
+
+Good uses:
+
+- cinematic hero loops
+- visual experiments
+- conceptual campaign imagery
+- abstract transition videos
+- motion tests
+- LAB content
+- atmospheric backgrounds
+
+Bad uses:
+
+- replacing real client work
+- generating fake client campaigns
+- inventing portfolio projects
+- creating fake brand results
+- adding AI imagery just for decoration
+- generating hundreds of unnecessary assets
+
+If actual user assets exist, prioritize them.
+
+AI content must be clearly separated from client work where necessary.
+
+20 — DO NOT MISREPRESENT AI WORK
+Any AI-generated visuals used in the website must not be presented as actual client work.
+AI content should live primarily under:
+LAB
+or
+VESAGE EXPERIMENTS
+unless the user explicitly says an AI-generated piece is a real commissioned project.
+21 — VISUAL LANGUAGE
+The main VESAGE interface:
+Warm off-white
+Deep black
+Soft gray
+Use color sparingly.
+Suggested base:
+OFF-WHITE
+#F3F1EC
+
+BLACK
+#0A0A0A
+
+MUTED GRAY
+#8B8984
+Do not force these colors onto project imagery.
+Each project can have its own visual world.
+22 — TYPOGRAPHY
+Use two typefaces.
+DISPLAY
+Elegant editorial serif.
+Use for:
+VESAGE
+major headlines
+giant numbers
+statements
+project titles
+SANS
+Modern grotesk.
+Use for:
+navigation
+metadata
+categories
+descriptions
+buttons
+credits
+The contrast should feel:
+EDITORIAL + MODERN
+Avoid fonts that make the website look like a generic tech startup.
+23 — OVERSIZED TYPE
+Typography can become extremely large.
+For example:
+VESAGE
+can span much of the screen.
+Or:
+FILM
+
+CAMPAIGNS
+
+DIGITAL
+can become an architectural element.
+Some text may partially leave the viewport.
+But:
+Do not sacrifice readability.
+24 — MOTION PHILOSOPHY
+Motion should feel:
+CINEMATIC
+SLOW
+PRECISE
+CONTROLLED
+Use:
+image reveals
+masked transitions
+subtle scale
+subtle crop changes
+typography movement
+smooth scrolling
+project transitions
+cursor states
+Avoid:
+bouncing
+excessive rotations
+random parallax
+floating blobs
+excessive particles
+animation on every element
+gimmicky 3D
+The site should feel like a film, not a motion-design demo.
+25 — SCROLL EXPERIENCE
+Scrolling should reveal the portfolio progressively.
+The user should feel that the website is being directed.
+Example:
+Hero
+↓
+Typography
+↓
+Project visual
+↓
+Project number
+↓
+Project title
+↓
+Visual expands
+↓
+Next project
+↓
+Unexpected composition
+↓
+LAB
+↓
+ABOUT
+↓
+CONTACT
+Do not make every section behave identically.
+Create rhythm.
+26 — VIDEO BEHAVIOR
+Portfolio videos should support:
+autoplay
+muted
+loop
+playsinline
+poster image
+responsive aspect ratio
+No video should autoplay with sound.
+Videos below the fold should be lazy-loaded.
+Do not load ten videos simultaneously at full resolution.
+Performance is critical.
+27 — MOBILE
+Mobile must be intentionally designed.
+Do NOT simply stack the desktop layout.
+On mobile:
+maintain oversized typography
+maintain cinematic imagery
+simplify interactions
+replace hover behavior with tap behavior
+preserve negative space
+optimize video loading
+keep navigation minimal
+The mobile website should feel like a luxury editorial magazine on a phone.
+28 — ABOUT
+Keep the About section short.
+Possible copy direction:
+VESAGE IS AN INDEPENDENT CREATIVE PRACTICE WORKING ACROSS FILM, ADVERTISING, BRANDS AND DIGITAL.
+Then:
+WE LIKE GOOD IDEAS, STRONG IMAGES, AND THINGS THAT DON'T LOOK LIKE EVERYTHING ELSE.
+Do not describe VESAGE as a "full-service agency."
+The tone should feel independent and confident.
+29 — CONTACT
+The contact section should be one of the final visual moments.
+Use:
+HAVE SOMETHING
+WORTH MAKING?
+Then:
+LET'S MAKE IT.
+Email/contact information should be added once provided.
+Do not invent an email address.
+Do not invent Instagram/Vimeo URLs.
+Use placeholders during development if necessary.
+30 — FOOTER
+Very minimal.
+VESAGE
+
+WORK
+LAB
+ABOUT
+CONTACT
+
+© 2026 VESAGE
+Social links only when actual URLs are provided.
+31 — THE AURA ROYALE VISUAL DIRECTION
+The provided Aura Royale product image is especially suitable for establishing the luxury side of VESAGE.
+Use it carefully.
+The visual language:
+black
+charcoal
+silver
+glass
+smoke
+hard rim lighting
+deep shadows
+premium product photography
+negative space
+Do not add fake gold.
+Do not over-process the image.
+Let the product remain the hero.
+The Aura Royale project should feel like:
+luxury fragrance campaign × contemporary art photograph
+32 — PORTFOLIO RHYTHM
+The ten projects should create visual rhythm.
+Suggested sequence:
+01
+UNIQLO
+UGC / INDOOR
+02
+UNIQLO
+UGC / OUTDOOR
+03
+BRUNELLO CUCINELLI
+CINEMATIC COMMERCIAL
+04
+UNIQLO
+FASHION / CATALOGUE
+05
+CLOUD NINE — SPLASH POPS
+UGC / FRAGRANCE
+06
+BRUNELLO CUCINELLI
+PRODUCT / HYPER-MOTION
+07
+TIFFANY
+JEWELRY / PRODUCT STORY
+08
+TIFFANY
+BRAND / CINEMATIC
+09
+AURA ROYALE
+PERFUME / HYPER-MOTION
+10
+AURA ROYALE
+PRODUCT PHOTOGRAPHY
+Do not change this order without a strong creative reason.
+33 — DO NOT MAKE EVERY PROJECT LOOK THE SAME
+This is critical.
+UNIQLO UGC:
+More energetic / natural / contemporary.
+Brunello Cucinelli:
+Elegant / cinematic / editorial.
+Cloud Nine:
+Beauty / lifestyle / intimate.
+Tiffany:
+Jewelry / precision / sophistication.
+Aura Royale:
+Dark / luxurious / product-focused.
+The VESAGE interface should remain consistent while the projects themselves create different visual worlds.
+34 — THE WEBSITE SHOULD FEEL LIKE A CURATED SHOW
+Imagine the homepage is a physical gallery.
+There is no requirement that every artwork has the same frame.
+Some are:
+huge
+small
+horizontal
+vertical
+full-screen
+split-screen
+The curator controls the experience.
+VESAGE is the curator.
+35 — PERFORMANCE
+Because this website contains many videos:
+Prioritize performance from the beginning.
+Implement:
+lazy loading
+poster frames
+responsive video
+compressed assets
+deferred video loading
+preload only critical hero media
+efficient image formats
+GPU-friendly animation
+minimal DOM
+code splitting if useful
+Do not sacrifice performance for unnecessary effects.
+36 — ACCESSIBILITY
+Implement:
+semantic HTML
+keyboard navigation
+visible focus
+alt text
+proper headings
+accessible navigation
+reduced-motion support
+readable contrast
+Respect:
+prefers-reduced-motion
+If enabled:
+remove excessive transitions
+disable unnecessary parallax
+simplify cursor effects
+preserve usability
+The website must still work beautifully without motion.
+37 — DATA ARCHITECTURE
+Create a reusable project structure.
+Do not hard-code every project into separate components.
+For example, conceptually:
+projects/
+
+01-unqlo-indoor
+02-unqlo-outdoor
+03-brunello-cinematic
+04-unqlo-catalogue
+05-cloud-nine
+06-brunello-product
+07-tiffany-product-story
+08-tiffany-cinematic
+09-aura-royale-motion
+10-aura-royale-product
+Each project should contain:
+title
+client
+category
+year
+description
+video
+poster
+images
+credits
+theme
+featured status
+This allows VESAGE to grow.
+38 — ASSET MANAGEMENT
+When the actual files are added, organize them cleanly.
+For example:
+/assets/projects/unqlo/
+/assets/projects/brunello-cucinelli/
+/assets/projects/cloud-nine/
+/assets/projects/tiffany/
+/assets/projects/aura-royale/
+
+/assets/lab/
+/assets/brand/
+Do not scatter assets throughout the project.
+39 — REAL ASSETS VS PLACEHOLDERS
+Until final assets are integrated:
+Use clearly identifiable placeholders.
+Never create fake portfolio material and present it as the user's work.
+For example:
+[VIDEO ASSET]
+[POSTER IMAGE]
+[PROJECT DESCRIPTION]
+If Higgsfield creates temporary concept imagery:
+Mark it internally as:
+TEMPORARY AI CONCEPT
+Make replacing it easy.
+40 — NO HALLUCINATION
+This is a strict requirement.
+Never invent:
+awards
+campaign results
+views
+conversions
+sales
+clients
+production companies
+creative directors
+photographers
+directors
+agencies
+dates
+campaign objectives
+testimonials
+quotes
+statistics
+If the information isn't provided:
+leave it out.
+A beautiful portfolio with less information is better than a beautiful portfolio containing false information.
+41 — NO FAKE CASE STUDIES
+Do not create:
+"The campaign increased engagement by 240%."
+unless the user provides that exact information.
+Do not create:
+"The campaign reached 10 million people."
+unless supplied.
+Do not create fake client testimonials.
+Do not create fake awards.
+The website must remain trustworthy.
+42 — SIGNATURE INTERACTIONS
+The website should have approximately 3–4 major memorable interactions.
+01 — HERO
+Typography + cinematic visual.
+02 — PROJECT HOVER
+Cursor becomes:
+VIEW / PLAY / ENTER.
+03 — PROJECT TRANSITION
+Artwork expands into the project.
+04 — LAB
+Experimental visual behavior.
+That is enough.
+Do not add 20 different effects.
+43 — CREATIVE RESTRAINT
+Before adding any visual effect ask:
+Does this improve the story?
+If not:
+remove it.
+The goal is not:
+"Look how many animations we have."
+The goal is:
+"This website has taste."
+44 — FINAL HOMEPAGE EXPERIENCE
+The approximate flow should be:
+VESAGE
+
+WORK   LAB   ABOUT   CONTACT
+
+
+WE MAKE
+THINGS WORTH
+LOOKING AT.
+
+[ CINEMATIC VISUAL ]
+
+SCROLL TO EXPLORE
+
+
+SELECTED WORK
+
+
+01
+
+UNIQLO
+
+UGC / FASHION
+
+[ VIDEO ]
+
+
+02
+
+UNIQLO
+
+UGC / FASHION
+
+[ VIDEO ]
+
+
+03
+
+BRUNELLO CUCINELLI
+
+CINEMATIC COMMERCIAL
+
+[ LARGE VIDEO ]
+
+
+04
+
+UNIQLO
+
+FASHION / CATALOGUE
+
+[ VIDEO ]
+
+
+05
+
+CLOUD NINE
+
+SPLASH POPS
+
+UGC / FRAGRANCE
+
+[ VIDEO ]
+
+
+06
+
+BRUNELLO CUCINELLI
+
+PRODUCT / HYPER-MOTION
+
+[ VIDEO ]
+
+
+07
+
+TIFFANY
+
+JEWELRY / PRODUCT STORY
+
+[ VIDEO ]
+
+
+08
+
+TIFFANY
+
+BRAND / CINEMATIC
+
+[ VIDEO ]
+
+
+09
+
+AURA ROYALE
+
+PERFUME / HYPER-MOTION
+
+[ VIDEO ]
+
+
+10
+
+AURA ROYALE
+
+PRODUCT
+
+[ IMAGE ]
+
+
+LAB
+
+UNRELEASED
+
+EXPERIMENTS
+AND THINGS WE MAKE
+WHEN NOBODY ASKS.
+
+
+[ EXPERIMENTAL VISUALS ]
+
+
+ABOUT
+
+VESAGE IS AN
+INDEPENDENT
+CREATIVE PRACTICE
+WORKING ACROSS
+FILM, ADVERTISING,
+BRANDS AND DIGITAL.
+
+
+HAVE SOMETHING
+WORTH MAKING?
+
+LET'S MAKE IT.
+
+
+VESAGE
+
+© 2026
+This is the structural direction, not a requirement that every section look exactly like this.
+Use your creative judgment to make the final composition better.
+45 — FINAL CREATIVE NORTH STAR
+The website should feel like:
+A fashion film director's portfolio collided with a luxury editorial and a contemporary digital art exhibition.
+It should NOT feel like:
+Another creative agency website.
+VESAGE should be:
+quietly confident
+cinematic
+luxurious
+minimal
+artistic
+bold
+The visitor should never feel that the website is desperately trying to prove that VESAGE is creative.
+The website itself should simply be creative.
+
+45 B
+
+12 — The overall VESAGE experience
+Think of this combination:
+Opening:
+Almost silent. Minimal.
+Typography:
+Huge.
+Images:
+Cinematic.
+Movement:
+Slow and intentional.
+Projects:
+The hero.
+Interface:
+Almost invisible.
+Personality:
+Artist.
+Credibility:
+Commercial.
+That's the sweet spot.
+
+46 — DEVELOPMENT PROCESS
+Do not blindly build everything at once.
+Work in this order:
+PHASE 1 — INSPECT
+Inspect the existing codebase.
+Determine:
+framework
+styling system
+routing
+existing dependencies
+animation libraries
+asset system
+video handling
+responsive structure
+Do not replace the stack unless necessary.
+PHASE 2 — FOUNDATION
+Build:
+typography
+colors
+spacing
+navigation
+project data architecture
+responsive foundation
+PHASE 3 — HERO
+Make the hero exceptional.
+Do not move forward until it feels like VESAGE.
+PHASE 4 — PORTFOLIO
+Build the 10-project exhibition.
+Prioritize the real uploaded assets.
+PHASE 5 — PROJECT PAGES
+Build reusable project templates.
+PHASE 6 — LAB
+Introduce experimental/Higgsfield content.
+PHASE 7 — ABOUT + CONTACT
+Keep them minimal.
+PHASE 8 — MOTION
+Only after the static composition is strong.
+PHASE 9 — MOBILE
+Design mobile intentionally.
+PHASE 10 — PERFORMANCE
+Optimize all videos and images.
+PHASE 11 — FINAL ART DIRECTION PASS
+Review the entire website as a creative director.
+Ask:
+Does it look expensive?
+Does it look artistic?
+Does it feel cinematic?
+Does it feel like VESAGE?
+Does it look different from a normal agency website?
+Are the projects the hero?
+Are we using too many effects?
+Can anything be removed?
+Does the website itself demonstrate the quality of VESAGE?
+47 — MOST IMPORTANT FINAL INSTRUCTION
+Do not optimize for "more."
+Optimize for:
+TASTE.
+The website should make a potential client believe:
+If VESAGE can make their own website look this good, imagine what they can make for our brand.
+That is the ultimate purpose of this portfolio.
+Build VESAGE as an artwork first, portfolio second, and business website third.

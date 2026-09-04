@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MediaFrame from '../../components/MediaFrame.astro';
+import { projects } from '../../data/projects.js';
+
+export function getStaticPaths() {
+  return projects.map((project, index) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      // Wrapping keeps the last project's "next" pointing back to the first,
+      // so the exhibition has no dead end.
+      next: projects[(index + 1) % projects.length],
+    },
+  }));
+}
+
+const { project, next } = Astro.props;
+const { number, slug, client, category, variant, statement, media, gallery, extraVideo, theme, dark } = project;
+
+// Matches the homepage thumbnail so the artwork expands into this page (§13).
+const transitionName = `media-${slug}`;
+
+// §14/§40: credits and year are deliberately absent — none were supplied, and
+// inventing them is forbidden. Add a `credits` array to the project in
+// src/data/projects.js and this section appears.
+const credits = project.credits ?? [];
+---
+
+<BaseLayout
+  title={`${client} — ${category}`}
+  description={statement.replace(/\n/g, ' ')}
+  dark={dark}
+>
+  <article class="project" style={`--theme:${theme}`} data-dark={dark ? '' : undefined}>
+    {/* ------------------------------------------------------------- HERO */}
+    <header class="project__hero" data-orient={media.w >= media.h ? 'landscape' : 'upright'}>
+      <MediaFrame media={media} variant="full" transitionName={transitionName} transitionStatic eager sizes="100vw" />
+    </header>
+
+    {/* ------------------------------------------------------------ TITLE */}
+    <div class="project__intro shell">
+      <p class="numeral project__number">{number}</p>
+
+      <div class="project__meta">
+        <h1 class="display project__client">{client}</h1>
+        <p class="meta meta--ink project__category">
+          {category}{variant ? ` / ${variant}` : ''}
+        </p>
+      </div>
+
+      <p class="display project__statement">{statement}</p>
+    </div>
+
+    {/* ----------------------------------------------------------- GALLERY */}
+    {
+      gallery.length > 0 && (
+        <section class="project__gallery" aria-label="Project stills">
+          <hr class="rule shell-rule" />
+          <p class="meta shell project__section-label">The work</p>
+
+          <ul class="project__grid">
+            {gallery.map((image) => (
+              <li class="project__grid-item reveal" data-span={image.w > image.h ? 'wide' : undefined}>
+                <MediaFrame
+                  media={{ kind: 'image', ...image }}
+                  sizes="(max-width: 60rem) 100vw, 50vw"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {/* ------------------------------------------------------- EXTRA FILM */}
+    {
+      extraVideo && (
+        <section class="project__extra shell" aria-label={extraVideo.label}>
+          <hr class="rule" />
+          <p class="meta project__section-label">{extraVideo.label}</p>
+          <div class="reveal">
+            <MediaFrame
+              media={{ kind: 'video', ...extraVideo }}
+              variant="full"
+              sizes="(max-width: 60rem) 100vw, 80vw"
+            />
+          </div>
+        </section>
+      )
+    }
+
+    {/* ----------------------------------------------------------- CREDITS */}
+    {
+      credits.length > 0 && (
+        <section class="project__credits shell" aria-label="Credits">
+          <hr class="rule" />
+          <ul class="project__credit-list">
+            {credits.map((credit) => (
+              <li>
+                <span class="meta">{credit.role}</span>
+                <span class="project__credit-name">{credit.name}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {/* -------------------------------------------------------------- NEXT */}
+    <nav class="project__next shell" aria-label="Next project">
+      <hr class="rule" />
+      <a class="project__next-link" href={`/work/${next.slug}`} data-cursor-label-text="Next">
+        <p class="meta">Next — {next.number}</p>
+        <p class="display project__next-client">{next.client}</p>
+        <p class="meta">{next.category}</p>
+      </a>
+      <a class="meta meta--ink link project__index" href="/#work">All work</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .project {
+    padding-bottom: clamp(3rem, 8vh, 5rem);
+  }
+
+  /* ------------------------------------------------------------------ HERO
+     Landscape films run full-bleed. Upright and square films are capped to
+     one screen and centred instead — cropping a 9:16 film to the full width
+     would leave a letterbox slice of it, and a centred panel on paper is the
+     more editorial answer anyway. */
+
+  .project__hero {
+    display: flex;
+    justify-content: center;
+  }
+
+  .project__hero :global(.frame) {
+    max-height: 92svh;
+  }
+
+  .project__hero[data-orient='landscape'] :global(.frame) {
+    width: 100%;
+  }
+
+  .project__hero[data-orient='upright'] {
+    padding: clamp(4.5rem, 11vh, 7rem) var(--gutter) 0;
+  }
+
+  .project__hero[data-orient='upright'] :global(.frame) {
+    max-height: 78svh;
+  }
+
+  /* ----------------------------------------------------------------- INTRO */
+
+  .project__intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem) var(--gutter);
+    padding-block: clamp(3rem, 9vh, 6rem) clamp(2rem, 6vh, 4rem);
+    align-items: start;
+  }
+
+  .project__number {
+    grid-column: 1 / 2;
+    color: var(--mute);
+    margin: 0;
+  }
+
+  .project__meta {
+    grid-column: 2 / 7;
+  }
+
+  .project__client {
+    font-size: var(--t-lg);
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  .project__category {
+    margin: 0;
+  }
+
+  .project__statement {
+    grid-column: 8 / -1;
+    font-size: var(--t-md);
+    white-space: pre-line;
+    text-wrap: normal;
+    margin: 0;
+    align-self: end;
+  }
+
+  @media (max-width: 59.99rem) {
+    .project__number {
+      grid-column: 1 / -1;
+    }
+
+    .project__meta,
+    .project__statement {
+      grid-column: 1 / -1;
+    }
+
+    .project__statement {
+      margin-top: 1.5rem;
+    }
+  }
+
+  /* --------------------------------------------------------------- GALLERY */
+
+  .project__section-label {
+    margin: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  .shell-rule {
+    margin-inline: var(--gutter);
+  }
+
+  .project__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gutter);
+    margin: 0;
+    padding-inline: var(--gutter);
+    list-style: none;
+  }
+
+  /* Landscape stills earn the full width; squares and uprights sit in the
+     two-column rhythm. Spanning by position instead would blow a square logo
+     up to the width of the page. */
+  .project__grid-item[data-span='wide'] {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 47.99rem) {
+    .project__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ----------------------------------------------------------------- EXTRA */
+
+  .project__extra {
+    padding-top: clamp(2rem, 6vh, 4rem);
+  }
+
+  /* --------------------------------------------------------------- CREDITS */
+
+  .project__credits {
+    padding-top: clamp(2rem, 6vh, 4rem);
+  }
+
+  .project__credit-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: clamp(1.5rem, 4vh, 2.5rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project__credit-list li {
+    display: grid;
+    grid-template-columns: minmax(10rem, 16rem) 1fr;
+    gap: var(--gutter);
+    align-items: baseline;
+  }
+
+  /* ------------------------------------------------------------------ NEXT */
+
+  .project__next {
+    padding-top: clamp(3rem, 9vh, 6rem);
+  }
+
+  .project__next-link {
+    display: block;
+    padding-block: clamp(2rem, 6vh, 3.5rem);
+  }
+
+  .project__next-client {
+    font-size: var(--t-lg);
+    text-transform: uppercase;
+    margin: 0.35rem 0;
+    transition: translate var(--dur) var(--ease);
+  }
+
+  .project__next-link:hover .project__next-client,
+  .project__next-link:focus-visible .project__next-client {
+    translate: clamp(0.5rem, 1.5vw, 1.5rem) 0;
+  }
+
+  .project__index {
+    display: inline-block;
+  }
+</style>

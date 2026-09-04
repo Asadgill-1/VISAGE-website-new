@@ -1,0 +1,191 @@
+---
+// Tiny and quiet — §09. Retreats on scroll down, returns on scroll up, so the
+// work owns the screen.
+const links = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Lab', href: '/#lab' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<header class="nav" data-nav>
+  <a class="nav__mark" href="/" aria-label="VESAGE — home">Vesage</a>
+
+  <nav aria-label="Primary">
+    <ul class="nav__list">
+      {
+        links.map((link) => (
+          <li>
+            <a class="nav__link meta meta--ink" href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gutter);
+    padding: clamp(1rem, 2.2vh, 1.75rem) var(--gutter);
+    color: var(--fg);
+    transition:
+      transform 0.5s var(--ease),
+      color 0.3s var(--ease);
+    view-transition-name: vesage-nav;
+  }
+
+  /* Over paper or a dark page the nav simply uses the page foreground. Over a
+     film it cannot: any single colour loses contrast somewhere in the frame,
+     and blend modes go to zero contrast against mid-tones. So when the bar is
+     actually over media it turns white and brings a soft scrim with it. */
+  .nav[data-over-media] {
+    color: #fff;
+  }
+
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0.38), rgb(0 0 0 / 0));
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+    pointer-events: none;
+  }
+
+  .nav[data-over-media]::before {
+    opacity: 1;
+  }
+
+  .nav :global(.meta) {
+    color: inherit;
+  }
+
+  .nav[data-hidden] {
+    transform: translateY(-110%);
+  }
+
+  .nav__mark {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: clamp(1rem, 2.6vw, 2.75rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav__link {
+    position: relative;
+    padding-bottom: 0.25em;
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur-fast) var(--ease);
+  }
+
+  .nav__link:hover::after,
+  .nav__link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* At 375px the wordmark and the four links are within a few pixels of
+     touching, so both tighten. */
+  @media (max-width: 40rem) {
+    .nav {
+      gap: 0.75rem;
+    }
+
+    .nav__mark {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+    }
+
+    .nav__list {
+      gap: 0.85rem;
+    }
+
+    .nav__link {
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector('[data-nav]');
+
+  if (nav) {
+    let last = window.scrollY;
+    let queued = false;
+
+    // Is a film or still actually sitting under the bar right now? Asking the
+    // document beats tagging every full-bleed element, and it stays correct as
+    // layouts change.
+    const overMedia = () => {
+      const box = nav.getBoundingClientRect();
+      const y = Math.round(box.bottom * 0.6);
+      return [0.25, 0.5, 0.75].some((f) =>
+        document
+          .elementsFromPoint(Math.round(innerWidth * f), y)
+          .some((el) => el instanceof Element && el.closest('.frame'))
+      );
+    };
+
+    const update = () => {
+      queued = false;
+      const y = window.scrollY;
+
+      // Never hide the nav while a keyboard user is inside it.
+      if (y > last && y > 220 && !nav.contains(document.activeElement)) {
+        nav.setAttribute('data-hidden', '');
+      } else {
+        nav.removeAttribute('data-hidden');
+      }
+
+      if (overMedia()) nav.setAttribute('data-over-media', '');
+      else nav.removeAttribute('data-over-media');
+
+      last = y;
+    };
+
+    addEventListener(
+      'scroll',
+      () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(update);
+      },
+      { passive: true }
+    );
+
+    addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
+    update();
+  }
+</script>

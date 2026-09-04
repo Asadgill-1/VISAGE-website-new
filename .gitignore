@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# Source masters (~460 MB). Web deliverables live in public/media/.
+Assets/
+
+# transient lock held by scripts/build-media.sh
+.media-build.lock/

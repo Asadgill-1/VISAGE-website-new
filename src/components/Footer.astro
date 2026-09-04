@@ -1,0 +1,106 @@
+---
+import { site } from '../data/site.js';
+
+// §30 — very minimal. Social links appear only once real URLs exist.
+const year = new Date().getFullYear();
+const links = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Lab', href: '/#lab' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<footer class="foot shell">
+  <hr class="rule" />
+
+  <div class="foot__body">
+    <p class="foot__mark display">Vesage</p>
+
+    <nav class="foot__nav" aria-label="Footer">
+      <ul>
+        {
+          links.map((link) => (
+            <li>
+              <a class="meta meta--ink link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    {
+      site.socials.length > 0 && (
+        <nav class="foot__nav" aria-label="Elsewhere">
+          <ul>
+            {site.socials.map((social) => (
+              <li>
+                <a class="meta meta--ink link" href={social.href} rel="me noopener" target="_blank">
+                  {social.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <p class="meta foot__copy">© {year} {site.name}</p>
+  </div>
+
+  {site.trademarkNotice && <p class="foot__notice">{site.trademarkNotice}</p>}
+</footer>
+
+<style>
+  .foot {
+    padding-block: clamp(3rem, 8vh, 6rem) clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  .foot__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(2rem, 6vw, 6rem);
+    padding-top: clamp(2rem, 6vh, 4rem);
+  }
+
+  .foot__mark {
+    font-size: clamp(3rem, 12vw, 9rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.8;
+    margin: 0;
+  }
+
+  .foot__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .foot__copy {
+    margin: 0;
+  }
+
+  /* §17 — present, findable, deliberately not loud. */
+  .foot__notice {
+    max-width: 52ch;
+    margin: clamp(2.5rem, 7vh, 4.5rem) 0 0;
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    color: var(--mute);
+  }
+
+  @media (max-width: 40rem) {
+    .foot__body {
+      align-items: flex-start;
+      gap: 2rem;
+    }
+  }
+</style>

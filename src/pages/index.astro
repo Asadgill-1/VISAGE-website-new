@@ -1,0 +1,390 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaFrame from '../components/MediaFrame.astro';
+import ProjectBlock from '../components/ProjectBlock.astro';
+import { projects } from '../data/projects.js';
+import { lab } from '../data/lab.js';
+import { site } from '../data/site.js';
+
+/**
+ * Hero film — the Aura Royale hyper-motion piece. Chosen because it is the
+ * most abstract thing in the portfolio (black glass, rim light, almost no
+ * product context), it is a tall panel that the wordmark can run behind, and
+ * at 4.7 MB it is the cheapest film here to put above the fold.
+ *
+ * It is real VESAGE work, so nothing is misrepresented (§10) — but it does
+ * also appear as project 09, so the same film runs twice on this page. §08
+ * calls for a VESAGE identity visual instead. Replacing this one object with a
+ * generated film is the whole change.
+ */
+const heroMedia = {
+  kind: 'video',
+  name: 'aura-royale-hyper-motion',
+  w: 1440,
+  h: 2560,
+  alt: 'Perfume bottle turning under hard rim light',
+};
+
+const disciplines = ['Film', 'Campaigns', 'Digital'];
+---
+
+<BaseLayout
+  title={null}
+  description="VESAGE — an independent creative practice making films, campaigns, brands and digital experiences with an artist’s eye."
+>
+  {/* ---------------------------------------------------------------- HERO */}
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 class="hero__mark display" id="hero-title">
+      <span class="visually-hidden">VESAGE — we make things worth looking at.</span>
+      <span aria-hidden="true">Vesage</span>
+    </h1>
+
+    <div class="hero__film">
+      <MediaFrame media={heroMedia} eager sizes="(max-width: 60rem) 100vw, 52vw" />
+    </div>
+
+    <p class="hero__line display" aria-hidden="true">We make<br />things worth<br />looking at.</p>
+
+    <ul class="hero__disciplines" aria-label="Disciplines">
+      {disciplines.map((d) => <li class="meta meta--ink">{d}</li>)}
+    </ul>
+
+    <a class="hero__scroll meta" href="#work">Scroll to explore</a>
+  </section>
+
+  {/* ---------------------------------------------------------------- WORK */}
+  <section id="work" class="work" aria-labelledby="work-title">
+    <div class="shell work__head">
+      <hr class="rule" />
+      <h2 class="display work__title" id="work-title">Selected<br />Work</h2>
+      <p class="meta work__count">{projects.length} projects</p>
+    </div>
+
+    {projects.map((project, index) => <ProjectBlock project={project} index={index} />)}
+  </section>
+
+  {/* ----------------------------------------------------------------- LAB */}
+  <section id="lab" class="lab shell" aria-labelledby="lab-title">
+    <hr class="rule" />
+
+    <div class="lab__head">
+      <h2 class="display lab__title" id="lab-title">Lab</h2>
+      <p class="meta lab__tag">Unreleased</p>
+    </div>
+
+    <p class="display lab__line">Experiments and things<br />we make when nobody asks.</p>
+
+    {
+      lab.length > 0 ? (
+        <ul class="lab__grid">
+          {lab.map((item) => (
+            <li class="lab__item">
+              <MediaFrame media={item.media} sizes="(max-width: 60rem) 100vw, 33vw" />
+              <p class="meta lab__item-title">{item.title}</p>
+              {item.note && <p class="meta">{item.note}</p>}
+              {item.generated && <p class="meta lab__flag">Generated</p>}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="lab__empty meta">In production — nothing published here yet.</p>
+      )
+    }
+  </section>
+
+  {/* --------------------------------------------------------------- ABOUT */}
+  <section id="about" class="about shell" aria-labelledby="about-title">
+    <hr class="rule" />
+    <h2 class="meta about__label" id="about-title">About</h2>
+
+    <p class="display about__line">
+      VESAGE is an independent creative practice working across film, advertising, brands and digital.
+    </p>
+
+    <p class="lede about__sub">
+      We like good ideas, strong images, and things that don’t look like everything else.
+    </p>
+  </section>
+
+  {/* ------------------------------------------------------------- CONTACT */}
+  <section id="contact" class="contact shell" aria-labelledby="contact-title">
+    <hr class="rule" />
+
+    <h2 class="display contact__line" id="contact-title">Have something<br />worth making?</h2>
+
+    <p class="display contact__answer">Let’s make it.</p>
+
+    {
+      site.emailIsReal ? (
+        <a class="contact__email meta meta--ink link" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+      ) : (
+        <p class="contact__pending meta">
+          Contact address pending — add it in <code>src/data/site.js</code>
+        </p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  /* ------------------------------------------------------------------ HERO
+     Style-reference composition: the wordmark runs past both edges of the
+     viewport while the film sits contained and offset. Type and image occupy
+     the same rows so they overlap rather than sit in a column. */
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-content: center;
+    gap: clamp(1.5rem, 3vh, 2.5rem) var(--gutter);
+    padding: clamp(7rem, 16vh, 11rem) var(--gutter) clamp(3.5rem, 8vh, 5rem);
+    overflow: hidden;
+  }
+
+  /* Sized in vw with no cap so the wordmark runs past both edges at every
+     viewport width, and centred so the overflow is even on each side (§23).
+     The film sits above it, so the word passes behind the image. */
+  .hero__mark {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: max-content;
+    max-width: none;
+    margin: 0;
+    font-size: 34vw;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    line-height: 0.78;
+    white-space: nowrap;
+  }
+
+  .hero__film {
+    grid-column: 7 / -1;
+    grid-row: 1 / span 3;
+    align-self: center;
+    z-index: 1;
+    margin-top: clamp(2rem, 8vh, 7rem);
+  }
+
+  /* A 9:16 film six columns wide is taller than the screen. Capping the frame
+     keeps the hero to one viewport; the film crops rather than scrolls. */
+  .hero__film :global(.frame) {
+    max-height: 60svh;
+  }
+
+  .hero__line {
+    grid-column: 1 / 7;
+    grid-row: 2;
+    font-size: var(--t-md);
+    text-wrap: normal;
+    align-self: end;
+    margin: 0;
+  }
+
+  .hero__disciplines {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-self: end;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    left: var(--gutter);
+    bottom: clamp(1.25rem, 3vh, 2rem);
+    z-index: 2;
+  }
+
+  @media (max-width: 59.99rem) {
+    .hero {
+      align-content: start;
+      gap: 1.25rem var(--gutter);
+      padding-top: clamp(5.5rem, 14vh, 8rem);
+      padding-bottom: 5rem;
+    }
+
+    /* On a phone the wordmark stays oversized but stops overlapping the film,
+       so both keep their weight (§27). */
+    .hero__mark {
+      grid-row: 1;
+      justify-self: start;
+      font-size: 22vw;
+      margin-left: -0.05em;
+    }
+
+    .hero__film {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin-top: 0.5rem;
+    }
+
+    /* A capped height on an aspect-ratio box shrinks its width too, which
+       left a 9:16 film as a narrow strip. Re-framing to 4:5 keeps the full
+       width and crops the film instead. */
+    .hero__film :global(.frame) {
+      aspect-ratio: 4 / 5;
+      max-height: none;
+    }
+
+    .hero__line {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      font-size: var(--t-md);
+      margin-top: 0.5rem;
+    }
+
+    .hero__disciplines {
+      grid-column: 1 / -1;
+      grid-row: 4;
+      grid-auto-flow: column;
+      justify-content: start;
+      gap: 1.25rem;
+    }
+  }
+
+  /* ------------------------------------------------------------------ WORK */
+
+  .work__head {
+    padding-top: clamp(2rem, 6vh, 3.5rem);
+    padding-bottom: clamp(1rem, 3vh, 2rem);
+    display: grid;
+    gap: clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  .work__title {
+    font-size: var(--t-xl);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .work__count {
+    margin: 0;
+  }
+
+  /* ------------------------------------------------------------------- LAB */
+
+  .lab {
+    padding-block: var(--rhythm);
+  }
+
+  .lab__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gutter);
+    padding-top: clamp(2rem, 6vh, 3.5rem);
+  }
+
+  .lab__title {
+    font-size: var(--t-xl);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .lab__tag {
+    margin: 0;
+  }
+
+  .lab__line {
+    font-size: var(--t-md);
+    margin: clamp(2rem, 6vh, 3.5rem) 0 0;
+    max-width: 22ch;
+  }
+
+  .lab__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+    gap: var(--gutter);
+    margin: clamp(2.5rem, 7vh, 4rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lab__item {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .lab__item-title {
+    margin-top: 0.75rem;
+    color: var(--fg);
+  }
+
+  /* §20 — generated work is always labelled as such. */
+  .lab__flag {
+    color: var(--mute);
+    font-style: italic;
+  }
+
+  .lab__empty {
+    margin: clamp(2.5rem, 7vh, 4rem) 0 0;
+  }
+
+  /* ----------------------------------------------------------------- ABOUT */
+
+  .about {
+    padding-block: var(--rhythm);
+  }
+
+  .about__label {
+    margin: clamp(2rem, 6vh, 3.5rem) 0 clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  /* Display leading is set for one- and two-line headlines; a five-line
+     paragraph at this size needs the descenders to clear. */
+  .about__line {
+    font-size: var(--t-lg);
+    line-height: 0.96;
+    max-width: 18ch;
+    margin: 0;
+  }
+
+  .about__sub {
+    margin: clamp(2rem, 5vh, 3rem) 0 0;
+    color: var(--mute);
+  }
+
+  /* --------------------------------------------------------------- CONTACT */
+
+  .contact {
+    padding-block: var(--rhythm) clamp(3rem, 9vh, 6rem);
+  }
+
+  .contact__line {
+    font-size: var(--t-xl);
+    margin: clamp(2.5rem, 7vh, 4rem) 0 0;
+  }
+
+  .contact__answer {
+    font-size: var(--t-lg);
+    font-style: italic;
+    color: var(--mute);
+    margin: clamp(1rem, 3vh, 2rem) 0 0;
+  }
+
+  .contact__email {
+    display: inline-block;
+    margin-top: clamp(2.5rem, 7vh, 4rem);
+    font-size: var(--t-sm);
+    letter-spacing: 0.1em;
+  }
+
+  .contact__pending {
+    margin-top: clamp(2.5rem, 7vh, 4rem);
+  }
+
+  .contact__pending code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.95em;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+</style>

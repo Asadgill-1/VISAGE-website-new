@@ -1,0 +1,123 @@
+---
+import '../styles/base.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Cursor from '../components/Cursor.astro';
+
+const {
+  title,
+  description = 'VESAGE — an independent creative practice making films, campaigns, brands and digital experiences with an artist’s eye.',
+  dark = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — VESAGE` : 'VESAGE';
+---
+
+<!doctype html>
+<html lang="en" data-dark={dark ? '' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f3f1ec" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <link rel="preload" href="/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/archivo-normal-var.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <Cursor />
+
+    <script>
+      // Scroll reveal. Elements ship visible; JS opts them into the animation,
+      // so the page is complete and readable when this never runs.
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('.reveal');
+
+      if (!reduced && 'IntersectionObserver' in window) {
+        targets.forEach((el) => el.setAttribute('data-reveal', 'pending'));
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.setAttribute('data-reveal', 'in');
+              io.unobserve(entry.target);
+            });
+          },
+          { rootMargin: '0px 0px -12% 0px', threshold: 0.05 }
+        );
+
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+
+    <script>
+      // Video loading. Nothing is fetched until a clip is nearly on screen;
+      // clips pause the moment they leave. Keeps 13 films off the critical
+      // path and off the battery (§26, §35).
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const clips = document.querySelectorAll('video[data-src]');
+
+      const load = (video) => {
+        if (video.dataset.loaded) return;
+        video.src = video.dataset.src;
+        video.dataset.loaded = 'true';
+      };
+
+      if ('IntersectionObserver' in window) {
+        // Fetch early so playback starts without a visible stall.
+        const preload = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              load(entry.target);
+              preload.unobserve(entry.target);
+            });
+          },
+          { rootMargin: '150% 0px' }
+        );
+
+        // Play only what is actually visible.
+        const play = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const video = entry.target;
+              if (entry.isIntersecting && !reduced) {
+                load(video);
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        clips.forEach((video) => {
+          preload.observe(video);
+          play.observe(video);
+        });
+      } else {
+        clips.forEach(load);
+      }
+
+      // A clip that has never been played still deserves its poster, so only
+      // hide the poster once real frames exist.
+      clips.forEach((video) => {
+        video.addEventListener('playing', () => video.setAttribute('data-playing', ''), { once: true });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+---
+// §12 / §42 — one of the four signature interactions. A small ring that names
+// what a click will do. Pointer devices only; touch never sees it.
+---
+
+<div class="cursor" data-cursor aria-hidden="true">
+  <span class="cursor__label meta" data-cursor-label></span>
+</div>
+
+<style>
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    display: grid;
+    place-items: center;
+    width: 5.25rem;
+    height: 5.25rem;
+    margin: -2.625rem 0 0 -2.625rem;
+    border: 1px solid var(--paper);
+    border-radius: 50%;
+    color: var(--paper);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    opacity: 0;
+    scale: 0.4;
+    transition:
+      opacity 0.35s var(--ease),
+      scale 0.35s var(--ease);
+    will-change: translate;
+  }
+
+  .cursor[data-active] {
+    opacity: 1;
+    scale: 1;
+  }
+
+  .cursor__label {
+    color: inherit;
+    font-size: 0.625rem;
+    letter-spacing: 0.18em;
+  }
+
+  /* No custom cursor on touch, or for anyone who asked for less movement. */
+  @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const cursor = document.querySelector('[data-cursor]');
+  const label = document.querySelector('[data-cursor-label]');
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (cursor && label && fine && !reduced) {
+    let x = innerWidth / 2;
+    let y = innerHeight / 2;
+    let cx = x;
+    let cy = y;
+    let frame = 0;
+
+    addEventListener(
+      'pointermove',
+      (event) => {
+        x = event.clientX;
+        y = event.clientY;
+
+        const target = event.target instanceof Element ? event.target.closest('[data-cursor-label-text]') : null;
+
+        if (target) {
+          label.textContent = target.getAttribute('data-cursor-label-text');
+          cursor.setAttribute('data-active', '');
+        } else {
+          cursor.removeAttribute('data-active');
+        }
+
+        if (!frame) frame = requestAnimationFrame(follow);
+      },
+      { passive: true }
+    );
+
+    // Trails slightly behind the pointer — the lag is what makes it read as
+    // deliberate rather than as a second mouse.
+    function follow() {
+      cx += (x - cx) * 0.18;
+      cy += (y - cy) * 0.18;
+      // `translate` and `scale` are separate properties, so position here
+      // never fights the hover scale in CSS.
+      cursor.style.translate = `${cx}px ${cy}px`;
+
+      if (Math.abs(x - cx) > 0.4 || Math.abs(y - cy) > 0.4) {
+        frame = requestAnimationFrame(follow);
+      } else {
+        frame = 0;
+      }
+    }
+
+    addEventListener('pointerleave', () => cursor.removeAttribute('data-active'));
+  }
+</script>

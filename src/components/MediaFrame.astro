@@ -1,0 +1,141 @@
+---
+import { loopSrc, fullSrc, posterSrc, imageSrc } from '../data/projects.js';
+
+/**
+ * The single place a project's film or still becomes markup.
+ *
+ * Videos never carry a `src` — the layout script attaches one as the clip
+ * approaches the viewport, so a page with thirteen films still loads like a
+ * page with none (§26, §35). Audio exists only in the `full` encode used on
+ * project pages, and it starts muted with a control to lift that.
+ *
+ * `transitionName` is only painted onto the element when `transitionStatic` is
+ * set — which the project page does, because it has exactly one hero. On the
+ * homepage the name is parked in `data-vt` and applied by ProjectBlock at
+ * click time. A `view-transition-name` promotes its element to its own
+ * compositor layer, and thirteen permanently-promoted playing videos is a real
+ * cost for an effect that involves one of them at a time.
+ */
+const {
+  media,
+  variant = 'loop',
+  transitionName,
+  transitionStatic = false,
+  sizes = '100vw',
+  eager = false,
+  class: className = '',
+} = Astro.props;
+
+const vtStyle = transitionName && transitionStatic ? `view-transition-name:${transitionName}` : undefined;
+
+const ratio = `${media.w} / ${media.h}`;
+const isImage = media.kind === 'image';
+const src = variant === 'full' ? fullSrc(media.name) : loopSrc(media.name);
+const poster = isImage ? imageSrc(media.name) : posterSrc(media.name);
+const hasSound = variant === 'full';
+---
+
+<figure
+  class={`frame ${className}`}
+  style={`--ratio:${ratio}`}
+  data-sound={hasSound ? '' : undefined}
+>
+  {
+    isImage ? (
+      <img
+        src={imageSrc(media.name)}
+        alt={media.alt ?? ''}
+        width={media.w}
+        height={media.h}
+        sizes={sizes}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={eager ? 'high' : undefined}
+        data-vt={transitionName}
+        style={vtStyle}
+      />
+    ) : (
+      <>
+        <video
+          data-src={src}
+          poster={poster}
+          width={media.w}
+          height={media.h}
+          muted
+          loop
+          playsinline
+          preload="none"
+          aria-label={media.alt ?? 'Project film'}
+          data-vt={transitionName}
+          style={vtStyle}
+        />
+        {hasSound && (
+          <button class="frame__sound meta" type="button" data-sound-toggle aria-pressed="false">
+            <span data-sound-label>Sound off</span>
+          </button>
+        )}
+      </>
+    )
+  }
+</figure>
+
+<style>
+  .frame {
+    position: relative;
+    margin: 0;
+    aspect-ratio: var(--ratio);
+    overflow: hidden;
+    background: var(--line);
+  }
+
+  .frame :global(img),
+  .frame :global(video) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* The poster is the video's own attribute, so there is never a blank box
+     before the first frame decodes. */
+  .frame :global(video) {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .frame__sound {
+    position: absolute;
+    right: clamp(0.75rem, 1.5vw, 1.25rem);
+    bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    z-index: 2;
+    padding: 0.55em 1em;
+    color: var(--paper);
+    border: 1px solid rgb(255 255 255 / 0.45);
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+    background: rgb(10 10 10 / 0.3);
+    transition: background var(--dur-fast) var(--ease);
+  }
+
+  .frame__sound:hover,
+  .frame__sound:focus-visible {
+    background: rgb(10 10 10 / 0.6);
+  }
+</style>
+
+<script>
+  // Sound stays off until asked for, on every clip that has any (§26).
+  document.querySelectorAll('[data-sound-toggle]').forEach((button) => {
+    const video = button.closest('figure')?.querySelector('video');
+    if (!video) return;
+
+    button.addEventListener('click', () => {
+      video.muted = !video.muted;
+      const on = !video.muted;
+      button.setAttribute('aria-pressed', String(on));
+      const label = button.querySelector('[data-sound-label]');
+      if (label) label.textContent = on ? 'Sound on' : 'Sound off';
+      if (on) video.play().catch(() => {});
+    });
+  });
+</script>
