@@ -138,7 +138,12 @@ it.
 **5 — "NOOR & BEAN".** The filenames read *Nour*; the logo and bottle label
 read *Noor*. The logo wins (§16, consistent spelling).
 
-**6 — Ember House text artefacts.** The hyper-motion film has `SCULTED` burned
+**6 — Anchor navigation.** `scroll-behavior: smooth` made every nav link a
+no-op: on a ~19,000px document Chrome abandons the animation, and clicking WORK
+or LAB moved the page zero pixels. Anchors jump now. Over that distance an
+animated scroll was never the better experience.
+
+**7 — Ember House text artefacts.** The hyper-motion film has `SCULTED` burned
 in mid-clip and an end card reading `EMER HOUSE`. Shipped as supplied, on
 instruction. The static Ember House images spell the name correctly. Fixing it
 needs a re-render, not a code change.
@@ -158,10 +163,29 @@ nothing stands in for them:
   placeholders. The contact block shows a visible "pending" state until
   `emailIsReal` is set to `true`; the footer renders no social links while
   `socials` is empty.
-- **LAB content.** `src/data/lab.js` is an empty array and the section says so
-  plainly rather than borrowing client work to fill itself.
 
 Project copy describes only what is visibly on screen in the supplied footage.
+
+---
+
+## Generated work
+
+Five films on this site were generated rather than filmed. None of them is
+presented as client work, and none appears in the portfolio sequence.
+
+- **The hero.** Raw linen falling through a shaft of daylight in a dark room.
+  It carries no product, no brand and no text, so it makes no claim about
+  anyone's campaign — it only sets the temperature of the practice, which is
+  the use the brief allows (§08, §10). It replaced a real client clip that was
+  also project 09, so the same film was running twice on the homepage.
+- **LAB** — Bloom, Fold, Passage, Tension. Four material studies. Every entry
+  carries `generated: true` and the section renders a visible *Generated* label
+  under each one, so AI work can never be read as a commission (§20). Their
+  notes describe only what is on screen.
+
+Both live in `Assets/generated/`, are transcoded by the same pipeline, and are
+marked `loop` in its variants column — they only ever appear as cards, so the
+audio encode a project hero needs is skipped.
 
 ---
 
