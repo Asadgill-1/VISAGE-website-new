@@ -83,9 +83,14 @@ html[data-dark] {
   box-sizing: border-box;
 }
 
+/* No `scroll-behavior: smooth` here on purpose. This document is ~19,000px
+   tall, and over that distance Chrome abandons the animation outright — a nav
+   link moved the page zero pixels. Anchors jump instead, which is both
+   reliable and the right call: a twenty-second animated scroll to the footer
+   is not cinematic, it is broken. Pacing comes from the reveals and the
+   layout, not from hijacking the scrollbar. */
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
   background: var(--bg);
 }
 
@@ -296,10 +301,6 @@ button {
 /* --- Reduced motion — §36 ------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
