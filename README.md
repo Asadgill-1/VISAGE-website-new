@@ -54,7 +54,7 @@ src/
   data/
     projects.js     all 13 projects — the only file you edit to add work
     site.js         contact + social placeholders, trademark notice
-    lab.js          LAB entries (currently empty, on purpose)
+    lab.js          LAB entries (generated; each labelled on the page)
   components/
     Nav.astro       fixed, retreats on scroll down
     Footer.astro    §30 minimal + §17 trademark notice
@@ -69,6 +69,7 @@ src/
 scripts/
   build-media.sh    Assets/ → public/media/
 Assets/             source masters, git-ignored (~460 MB)
+Assets/generated/   generated hero + LAB masters, git-ignored
 public/media/       web deliverables, committed
 ```
 
@@ -87,12 +88,14 @@ rhythm.
 source file, and it wipes its own output first so a partial run can't leave
 stale files behind.
 
-Three outputs per film:
+Up to three outputs per film — the `variants` column decides. `all` builds
+every row below; `loop` skips the `full` encode, for films that only appear as
+a card (the hero and the LAB set):
 
 | Output | Spec | Used by |
 | --- | --- | --- |
 | `loop/` | silent, ≤1080px long edge, CRF 30 | homepage cards |
-| `full/` | AAC 128k, ≤1920px long edge, CRF 22 | project page hero |
+| `full/` | AAC 128k, ≤1920px long edge, CRF 24 | project page hero |
 | `poster/` | JPEG, ≤1600px long edge | both, as the `poster` attribute |
 
 Homepage loops are silent by construction, so §26 ("no video autoplays with
