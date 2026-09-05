@@ -16,26 +16,35 @@ OUT="public/media"
 rm -rf "$OUT"
 mkdir -p "$OUT/loop" "$OUT/full" "$OUT/poster" "$OUT/image"
 
-# slug|source file|poster timestamp (seconds)|trim (seconds cut from the head)
+# slug|source file|poster timestamp (seconds)|trim (seconds cut from head)|variants
+#
+# variants: 'all' builds loop + full + poster. 'loop' skips the full encode,
+# for films that only ever appear as a card (the hero and the LAB set) and
+# would otherwise add ~25 MB of files nothing serves.
 #
 # Trim exists for one asset: the Brunello hyper-motion master opens on an
 # editing-timeline mockup (a white canvas labelled "AD 1" that zooms into the
 # footage) lasting about half a second. The poster avoided it; playback did
 # not, and a looping clip replayed it every pass. 0.6 cuts it cleanly.
 VIDEOS='
-uniqlo-ugc-indoor|UNIQLO - UGC indoor.mp4|4.0|0
-uniqlo-ugc-outdoor|UNIQLO - UGC Outdoor.mp4|7.0|0
-uniqlo-catalogue|UNIQLO - Product Catlouge.mp4|4.5|0
-uniqlo-product-film|UNIQLO - Commercial.mp4|5.0|0
-brunello-cinematic|BRUNELLO CUCINELLI - Cinematic Commercial Film.mp4|11.0|0
-brunello-hyper-motion|BRUNELLO CUCINELLI - Hyper-Motion Advertisement.mp4|6.0|0.6
-cloud-nine-splash-pops|CLOUD NINE — SPLASH POPS -  UGC.mp4|18.0|0
-tiffany-product-story|TIFFANY- Product Story Commercial.mp4|12.0|0
-tiffany-brand-cinematic|TIFFANY -Brand Cinematic Commercial.mp4|7.0|0
-aura-royale-hyper-motion|AURA ROYALE — perfume hyper-motion.mp4|1.2|0
-ember-house-hyper-motion|ember house Candle-hyper motion ad.mp4|7.0|0
-noor-bean-cinematic|Nour & Bean -  Cenimatic Ad.mp4|6.0|0
-noor-bean-hyper-motion|Nour & Bean -  Hyper Motion Ad.mp4|7.0|0
+uniqlo-ugc-indoor|UNIQLO - UGC indoor.mp4|4.0|0|all
+uniqlo-ugc-outdoor|UNIQLO - UGC Outdoor.mp4|7.0|0|all
+uniqlo-catalogue|UNIQLO - Product Catlouge.mp4|4.5|0|all
+uniqlo-product-film|UNIQLO - Commercial.mp4|5.0|0|all
+brunello-cinematic|BRUNELLO CUCINELLI - Cinematic Commercial Film.mp4|11.0|0|all
+brunello-hyper-motion|BRUNELLO CUCINELLI - Hyper-Motion Advertisement.mp4|6.0|0.6|all
+cloud-nine-splash-pops|CLOUD NINE — SPLASH POPS -  UGC.mp4|18.0|0|all
+tiffany-product-story|TIFFANY- Product Story Commercial.mp4|12.0|0|all
+tiffany-brand-cinematic|TIFFANY -Brand Cinematic Commercial.mp4|7.0|0|all
+aura-royale-hyper-motion|AURA ROYALE — perfume hyper-motion.mp4|1.2|0|all
+ember-house-hyper-motion|ember house Candle-hyper motion ad.mp4|7.0|0|all
+noor-bean-cinematic|Nour & Bean -  Cenimatic Ad.mp4|6.0|0|all
+noor-bean-hyper-motion|Nour & Bean -  Hyper Motion Ad.mp4|7.0|0|all
+vesage-hero|generated/vesage-hero.mp4|3.5|0|loop
+lab-ink|generated/lab-ink.mp4|4.0|0|loop
+lab-fold|generated/lab-fold.mp4|2.5|0|loop
+lab-passage|generated/lab-passage.mp4|1.5|0|loop
+lab-thread|generated/lab-thread.mp4|2.0|0|loop
 '
 
 # slug|source file
@@ -79,7 +88,11 @@ printf '%s\n' "$VIDEOS" | grep . | while IFS='|' read -r slug file ts; do
   ffmpeg -nostdin -v error -y -ss "$ts" -i "$in" -frames:v 1 \
     -vf "scale=$(fit "$in" 1600)" -q:v 4 "$OUT/poster/$slug.jpg"
 
-  echo "$slug  loop=$(du -k "$OUT/loop/$slug.mp4" | cut -f1)K  full=$(du -k "$OUT/full/$slug.mp4" | cut -f1)K"
+  if [ -f "$OUT/full/$slug.mp4" ]; then
+    echo "$slug  loop=$(du -k "$OUT/loop/$slug.mp4" | cut -f1)K  full=$(du -k "$OUT/full/$slug.mp4" | cut -f1)K"
+  else
+    echo "$slug  loop=$(du -k "$OUT/loop/$slug.mp4" | cut -f1)K  (loop only)"
+  fi
 done
 
 echo "=== IMAGE ==="

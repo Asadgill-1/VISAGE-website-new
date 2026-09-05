@@ -9,3 +9,6 @@ Assets/
 
 # transient lock held by scripts/build-media.sh
 .media-build.lock/
+
+# Generated masters are kept out of git like the client masters.
+# scripts/build-media.sh rebuilds public/media from them.

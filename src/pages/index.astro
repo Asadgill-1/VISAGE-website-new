@@ -7,22 +7,22 @@ import { lab } from '../data/lab.js';
 import { site } from '../data/site.js';
 
 /**
- * Hero film — the Aura Royale hyper-motion piece. Chosen because it is the
- * most abstract thing in the portfolio (black glass, rim light, almost no
- * product context), it is a tall panel that the wordmark can run behind, and
- * at 4.7 MB it is the cheapest film here to put above the fold.
+ * Hero film — a VESAGE identity piece, not client work (§08): raw linen
+ * falling through a hard shaft of daylight in a black room. It carries no
+ * product, no brand and no text, so it says nothing about anyone's campaign;
+ * it only sets the temperature of the practice.
  *
- * It is real VESAGE work, so nothing is misrepresented (§10) — but it does
- * also appear as project 09, so the same film runs twice on this page. §08
- * calls for a VESAGE identity visual instead. Replacing this one object with a
- * generated film is the whole change.
+ * Generated rather than filmed. That is why it is not presented as a project
+ * and appears nowhere in the portfolio sequence — §20 keeps generated work out
+ * of the client work entirely. Its LAB siblings are labelled on the page; this
+ * one is atmosphere behind a wordmark, which is the use §10 allows.
  */
 const heroMedia = {
   kind: 'video',
-  name: 'aura-royale-hyper-motion',
-  w: 1440,
-  h: 2560,
-  alt: 'Perfume bottle turning under hard rim light',
+  name: 'vesage-hero',
+  w: 1080,
+  h: 1920,
+  alt: 'A panel of raw linen falling through a shaft of daylight in a dark room',
 };
 
 const disciplines = ['Film', 'Campaigns', 'Digital'];
@@ -201,6 +201,24 @@ const disciplines = ['Film', 'Campaigns', 'Digital'];
     left: var(--gutter);
     bottom: clamp(1.25rem, 3vh, 2rem);
     z-index: 2;
+  }
+
+  /* Short laptop viewports (e.g. 1568x727): the wordmark, the film, the
+     headline and the scroll cue stop fitting in one screen together, and the
+     cue was falling below the fold. Tighten the frame rather than lose it. */
+  @media (min-width: 60rem) and (max-height: 51rem) {
+    .hero {
+      padding-top: clamp(4.5rem, 11vh, 7rem);
+      padding-bottom: clamp(2.5rem, 6vh, 3.5rem);
+    }
+
+    .hero__mark {
+      font-size: 30vw;
+    }
+
+    .hero__film :global(.frame) {
+      max-height: 46svh;
+    }
   }
 
   @media (max-width: 59.99rem) {
